@@ -269,7 +269,7 @@ const textNodes = [{
     },
     {
 		id: 15,
-		text: 'Katie tells you that as much as she personally supports your investigative work, she tells you that her boss, DCI Sharp has ordered her to stop your work.\n\nGame Over, try again.',
+		text: 'Katie tells you that as much as she personally supports your investigative work, she tells you that her boss, DCI Sharp has ordered her to stop your work.\n\nYou Lost since you lied to the police and lost their respect.\n\nGame Over, try again.',
 		options: [{
 			text: 'Restart',
 			nextText: -1
