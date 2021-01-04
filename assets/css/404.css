@@ -1,0 +1,85 @@
+* {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+a {
+	color: #e0e2f4;
+}
+
+body,
+p {
+    font-family: 'VT323', monospace;
+}
+
+h1 {
+	font-family: 'VT323', monospace;
+}
+
+h2 {
+	font-family: 'VT323', monospace;
+}
+
+h3 {
+	font-family: 'VT323', monospace;
+}
+
+h4 {
+	font-family: 'VT323', monospace;
+}
+
+body {
+	background: #0414a7;
+}
+
+.container {
+	width: 90%;
+	margin: auto;
+	max-width: 640px;
+}
+
+.bsod {
+	padding-top: 10%;
+}
+
+.bsod .neg {
+	text-align: center;
+	color: #0414a7;
+}
+
+.bsod .neg .bg {
+	background: #aaaaaa;
+	padding: 0 15px 2px 13px;
+}
+
+.bsod .title {
+	margin-bottom: 50px;
+}
+
+.bsod .nav {
+	margin-top: 35px;
+	text-align: center;
+}
+
+.bsod .nav .link {
+	text-decoration: none;
+	padding: 0 9px 2px 8px;
+}
+
+.bsod .nav .link:hover, .bsod .nav .link:focus {
+	background: #aaaaaa;
+	color: #0414a7;
+}
