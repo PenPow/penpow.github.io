@@ -21,6 +21,7 @@ function showTextNode(textNodeIndex) {
 			button.innerText = option.text
 			button.classList.add('btn')
 			button.classList.add('hvr-underline-from-left')
+			button.classList.add('noselect')
 			button.addEventListener('click', () => selectOption(option))
 			optionButtonsElement.appendChild(button)
 		}
@@ -42,7 +43,7 @@ function selectOption(option) {
 
 const textNodes = [{
 		id: 0,
-		text: 'Welcome to the High Rise Mystery Choose Your Own Adventure\n\nBased on the TSBA Book Nominee: High Rise Mystery\nBecome Nik and Norva and have the chance to solve the mystery yourself! Will you discover the murderer, or will you fail Hugo.\nFind out in this game!\n\nGood Luck!',
+		text: 'Welcome to the High Rise Mystery Choose Your Own Adventure\n\nBased on the TSBA Book Nominee: High Rise Mystery by Sharna Jackson.\n\nBecome Nik and Norva and have the chance to solve the mystery yourself! Will you discover the murderer, or will you fail Hugo?\nFind out in this choose your own adventure game!\n\nGood Luck!',
 		options: [{
 				text: 'Start Game',
 				nextText: 1
@@ -68,7 +69,7 @@ const textNodes = [{
 	},
 	{
 		id: 1,
-		text: 'There has been a murder in the TRI, the local council estate.\n Part Time Art Teacher, and Antiques Dealer Hugo Knightly Webb was found dead, on a rubbish skip.\nNearby was a paint can, lying half tipped over to the floor.\nYou pull your phone out and dial 999...',
+		text: 'There has been a murder in the Tri, the local council estate.\n Part time art teacher, and antiques dealer Hugo Knightly-Webb was found dead on a rubbish skip.\nNearby was a paint can, lying half tipped over onto the floor.\nYou pull your phone out and dial 999...',
 		options: [{
 				text: 'Take the paint can',
 				setState: {
@@ -84,7 +85,7 @@ const textNodes = [{
 	},
 	{
 		id: 2,
-		text: 'Nee-naw nee-naw\n\nAs the police arrive at the TRI, you are quickly whisked away to give evidence about the body. The policewoman, a former resident asks if you found anything of interest nearby.',
+		text: 'Nee-naw nee-naw\n\nAs the police arrive at the Tri, you are quickly whisked away to give evidence about the body. The policewoman, a former resident, asks if you found anything of interest nearby.',
 		options: [{
 				text: 'Hand in the paint can',
 				requiredState: (currentState) => currentState.paintCan,
@@ -113,7 +114,7 @@ const textNodes = [{
 	},
 	{
 		id: 3,
-		text: 'As you head over to your room, you see another resident, Mrs Kowalski, getting into the lift with you. What will you do?',
+		text: 'As you head over to your room, you see another resident, Mrs Kowalski, getting into the lift with you. What do you do?',
 		options: [{
 				text: 'Say nothing and go home as planned',
 				nextText: 4
@@ -143,14 +144,14 @@ const textNodes = [{
 		id: 5,
 		text: 'She says that she hasn\'t heard about it yet, and comments that you really liked him.',
 		options: [{
-				text: 'Tell Her About the Body',
+				text: 'Tell her about the body',
 				setState: {
 					info: true
 				},
 				nextText: 6
 			},
 			{
-				text: 'Stay quiet and say that you only just found out',
+				text: 'Stay quiet and say that you only just found out yourself',
 				setState: {
 					klowRespect: true
 				},
@@ -168,7 +169,7 @@ const textNodes = [{
 	},
 	{
 		id: 7,
-		text: 'You start crying as you tell her how much you miss him, she gives you a hug and tells you to stay strong.',
+		text: 'You start crying as you tell her how much you miss him. She gives you a hug and tells you to stay strong.',
 		options: [{
 			text: 'Return Home',
 			nextText: 12
@@ -176,7 +177,7 @@ const textNodes = [{
 	},
 	{
 		id: 8,
-		text: 'You think about the detective plans you made, find the body, question people, restore justice. You turn to her and prepare to question her.',
+		text: 'You think about the detective plans you made,\n\nFollow Leads, \nFind Culprits, \nRestore Justice. \n\nYou turn to her and prepare to question her.',
 		options: [{
 				text: 'Ask about her project',
 				setState: {
@@ -208,7 +209,7 @@ const textNodes = [{
 	},
 	{
 		id: 10,
-		text: 'She says that she was doing a small project at the time, and that she missed the meeting for the tri-angels charity (the estate charity run by Jane).',
+		text: 'She says that she was doing a small project at the time, and that she missed the meeting for the Tri-Angels charity (the estate charity run by Jane).',
 		options: [{
 				text: 'Ask about her project',
 				setState: {
@@ -235,7 +236,7 @@ const textNodes = [{
 	},
 	{
 		id: 12,
-		text: 'You get into bed conteplating the possible killers, as you contemplate their motives, and why they would do such a thing, you slowly drift off to sleep.',
+		text: 'You get into bed contemplating the possible killers. As you consider their motives, and why they would do such a thing, you slowly drift off to sleep.',
 		options: [{
 			text: 'Next Day: Start Investigating',
 			nextText: 13
@@ -257,7 +258,7 @@ const textNodes = [{
     },
     {
 		id: 14,
-		text: 'Katie looked worried. She quickly says, "I am sorry girls" and walks up the stairs towards your apartment',
+		text: 'Katie looked worried. She quickly says, "I am sorry girls" and walks up the stairs towards your apartment.',
 		options: [{
 			text: 'Follow Katie',
 			nextText: 16
@@ -269,7 +270,7 @@ const textNodes = [{
     },
     {
 		id: 15,
-		text: 'Katie tells you that as much as she personally supports your investigative work, she tells you that her boss, DCI Sharp has ordered her to stop your work.\n\nYou Lost since you lied to the police and lost their respect.\n\nGame Over, try again.',
+		text: 'Katie tells you that as much as she personally supports your investigative work, she tells you that her boss, DCI Sharp has ordered her to stop your work.\n\nYou lost since you lied to the police and lost their respect.\n\nGame over, try again.',
 		options: [{
 			text: 'Restart',
 			nextText: -1
@@ -301,7 +302,7 @@ const textNodes = [{
     },
     {
 		id: 19,
-		text: 'As your dad is lead out, he tells you, "Stay Safe Nik & Norva, I will get us out of this"',
+		text: 'As your dad is led out, he tells you, "Stay Safe Nik & Norva, I will get us out of this"',
 		options: [{
 			text: 'Run to Selena\'s House',
 			nextText: 20
@@ -316,12 +317,12 @@ const textNodes = [{
 		},
         {
             text: 'Investigate his Truck',
-            nextText: 22
+            nextText: 23
         }]
 	},
     {
 		id: 21,
-		text: 'As you walk towards Dad\'s office, to check the cameras you hear a loud noise, you turn around to see a large van on fire, Hugo\'s van! You see DCI Sharp run out of the office towards the explosion, now is your chance to go in.',
+		text: 'As you walk towards Dad\'s office, to check the cameras you hear a loud noise, you turn around to see a large van on fire, Hugo\'s van! You see DCI Sharp run out of the office towards the explosion. Now is your chance to go in!',
 		options: [{
 			text: 'Go to the office',
 			nextText: 22
@@ -333,7 +334,7 @@ const textNodes = [{
     },
     {
 		id: 22,
-		text: 'Hastily, you run inside and log into the CCTV system. You see a person carrying a body bag before throwing it down the rubbish chute, that must be Hugo! A few minutes later you see a man carrying a paint can, the official TRI paint can. Only dad has access to them, so dad must be innocent!',
+		text: 'Hastily, you run inside and log into the CCTV system. You see a person carrying a body bag before throwing it down the rubbish chute, that must be Hugo! A few minutes later you see a man carrying a paint can, the official Tri paint can. Only dad has access to them, so dad must be innocent!',
 		options: [{
 			text: 'Continue watching cameras',
 			nextText: 24
@@ -341,7 +342,7 @@ const textNodes = [{
     },
     {
 		id: 23,
-		text: 'You run towards the van, forgetting that DCI Sharp has her office near the cameras. You won\'t be able to access the cameras so you won\'t be able to solve the mystery\n\nGame Over, try again!',
+		text: 'You run towards the van, forgetting that DCI Sharp has her office near the cameras. You won\'t be able to access the cameras so you won\'t be able to solve the mystery.\n\nGame over, try again!',
 		options: [{
 			text: 'Restart',
 			nextText: -1
@@ -369,7 +370,7 @@ const textNodes = [{
     },
     {
 		id: 26,
-		text: 'Katie rushes to your house,and tells you to come with her, You notice DCI sharp rushing up the stairs.',
+		text: 'Katie rushes to your house,and tells you to come with her. You notice DCI Sharp rushing up the stairs.',
 		options: [{
 			text: 'Run to Selena\'s House.',
 			nextText: 27
@@ -377,7 +378,7 @@ const textNodes = [{
     },
     {
 		id: 27,
-		text: 'You rush up to the house and see Selena in tears. "Why would I kill Hugo, im innocent."\n\nYou explain that she was using the seeds to poison him, and that on the cameras he takes a sip and minutes later he was dead.\n\nKatie handcuffs Selena and walks her outside.',
+		text: 'You rush up to the house and see Selena in tears. "Why would I kill Hugo. I\'m innocent!"\n\nYou explain that she was using the seeds to poison him, and that on the cameras he takes a sip and minutes later he was dead.\n\nKatie handcuffs Selena and walks her outside.',
 		options: [{
 			text: 'Next Page',
 			nextText: 28
@@ -385,15 +386,15 @@ const textNodes = [{
     },
     {
 		id: 28,
-		text: 'You look towards Selena as she was lead out, and see a shadow of a familiar man outside. It was dad! You go and hug him as he slowly limps toward you.',
+		text: 'You look towards Selena as she was led out, and see a shadow of a familiar man outside. It was dad! You go and hug him as he slowly limps toward you.',
 		options: [{
-			text: 'You Won!',
+			text: 'Continue',
 			nextText: 29
 		}]
     },
     {
 		id: 29,
-		text: 'Congratulations!\n\nYou solved the mystery, and won the best detective prize for saving the tri.\n\nPlay Again?',
+		text: 'Congratulations!\n\nYou solved the mystery, and won the best detective prize for saving the Tri.\n\nPlay Again?',
 		options: [{
 			text: 'Play Again',
 			nextText: 1
