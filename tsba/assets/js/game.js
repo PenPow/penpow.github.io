@@ -56,7 +56,7 @@ const textNodes = [{
     },
     {
         id: 0.5,
-        text: 'This choose your own adventure game was made for the TSBA Creative Response Challenge 2020/2021 by Joshua Clements.\n\nBased of the nominee book, High-Rise Mystery by Sharna Jackson.\nDue to time and size limitations, this is a modified version of the story to fit the style of game. Therefore the story is slightly different, but still keeps the same main storyline at heart.\n\nOverall, this took me around two days to make, from idea to finished game.\nI hope you enjoy it! ��',
+        text: 'This choose your own adventure game was made for the TSBA Creative Response Challenge 2020/2021 by Joshua Clements.\n\nBased on the shortlisted book, High-Rise Mystery by Sharna Jackson.\nDue to time and size limitations, this is a modified version of the story to fit the style of game. Therefore the story is slightly different, but still keeps the same main storyline at heart.\n\nOverall, this took me around two days to make, from idea to finished game.\nI hope you enjoy it! ��',
         options: [{
                 text: 'Start the Game',
                 nextText: 1
@@ -131,7 +131,7 @@ const textNodes = [{
     },
     {
         id: 4,
-        text: 'The lift slowly drags you up to your floor, as you sweat in the blistering heat. Mrs Klowalski comments about how she struggles to survive in the heat.',
+        text: 'The lift slowly drags you up to your floor, as you sweat in the blistering heat. Mrs Kowalski comments about how she struggles to survive in the heat.',
         options: [{
             text: 'Go To Your Flat',
             setState: {
@@ -362,7 +362,7 @@ const textNodes = [{
     },
     {
         id: 25,
-        text: 'Ring Ring, Ring Ring\n\nYou call Katie and tell her you know who killed Hugo. You explain that Selena was using the vitonica\'s to poison Hugo. \nShe tells you to stay in your house and she would come deal with this.',
+        text: 'Ring Ring, Ring Ring\n\nYou call Katie and tell her you know who killed Hugo. You explain that Selena was using the Vitonicas to poison Hugo. \nShe tells you to stay in your house and she would come deal with this.',
         options: [{
                 text: 'Stay at home',
                 nextText: 26
