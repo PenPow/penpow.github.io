@@ -43,7 +43,7 @@ function selectOption(option) {
 
 const textNodes = [{
         id: 0,
-        text: 'Welcome to the High Rise Mystery Choose Your Own Adventure\n\nBased on the TSBA Book Nominee: High Rise Mystery by Sharna Jackson.\n\nBecome Nik and Norva and have the chance to solve the mystery yourself! Will you discover the murderer, or will you fail Hugo?\nFind out in this choose your own adventure game!\n\nGood Luck!',
+        text: 'Welcome to the High Rise Mystery Choose Your Own Adventure\n\nBased on the TSBA Nominee: High Rise Mystery by Sharna Jackson.\n\nBecome Nik and Norva and have the chance to solve the mystery yourself! Will you discover the murderer, or will you fail Hugo?\nFind out in this \'choose your own adventure\' game!\n\nGood Luck!',
         options: [{
                 text: 'Start Game',
                 nextText: 1
