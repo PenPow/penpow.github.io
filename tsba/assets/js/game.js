@@ -56,7 +56,7 @@ const textNodes = [{
     },
     {
         id: 0.5,
-        text: 'This choose your own adventure game was made for the TSBA Creative Response Challenge 2020/2021 by Joshua Clements.\n\nBased on the shortlisted book, High-Rise Mystery by Sharna Jackson.\nDue to time and size limitations, this is a modified version of the story to fit the style of game. Therefore the story is slightly different, but still keeps the same main storyline at heart.\n\nOverall, this took me around two days to make, from idea to finished game.\nI hope you enjoy it! ��',
+        text: 'This choose your own adventure game was made for the TSBA Creative Response Challenge 2020/2021 by Joshua Clements.\n\nBased on the shortlisted book, High-Rise Mystery by Sharna Jackson.\nDue to time and size limitations, this is a modified version of the story to fit the style of game. Therefore the story is slightly different, but still keeps the same main storyline at heart.\n\nOverall, this took me around two days to make, from idea to finished game.\nI hope you enjoy it!',
         options: [{
                 text: 'Start the Game',
                 nextText: 1
