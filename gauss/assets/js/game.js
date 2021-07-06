@@ -99,21 +99,21 @@ const textNodes = [{
     // Question 2
     {
         id: 4,
-        text: 'Question Number 2! His father almost stopped him from studying maths. Why was this?',
+        text: 'Question Number 2! Gauss almost stopped his son from studying maths. Why was this?',
         options: [{
-            text: 'Because they would shame the family name because they weren\'t as smart as him',
+            text: 'Because he would shame the family name because they weren\'t as smart as him',
             nextText: 6
         },
         {
-            text: 'Because his father wanted him to become a doctor',
+            text: 'Because he wanted him to become a doctor',
             nextText: 5
         },
         {
-            text: 'Because his parents thought maths was a useless hobby',
+            text: 'Because he thought maths was a useless hobby',
             nextText: 5
         },
         {
-            text: 'Because they thought that he would be better as an engineer',
+            text: 'Because he thought that he would be better as an engineer',
             nextText: 5
         }
     ]
@@ -874,7 +874,7 @@ const textNodes = [{
     // End of Quiz
     {
         id: 61,
-        text: `Congratulations on Completing the Quiz! You got [SCORE]/20.\n\nLook up your score on this graph to see what rank you achieved:\n» 18-20 - Gauss\n» 12-17 - Foremost of all Mathematicians\n» 6-11 - Child Progedy\n» 0-5 - Mathematician in Training\n\nTo play again, click the button below! Good Luck!`,
+        text: 'Congratulations on Completing the Quiz! You got [SCORE]/20.\n\nLook up your score on this graph to see what rank you achieved:\n» 18-20 - Gauss\n» 12-17 - Foremost of all Mathematicians\n» 6-11 - Child Prodigy\n» 0-5 - Mathematician in Training\n\nTo play again, click the button below! Good Luck!',
         options: [{
                 text: 'Play Again',
                 nextText: -1
