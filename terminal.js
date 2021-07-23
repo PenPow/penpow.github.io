@@ -8129,7 +8129,6 @@
         // ---------------------------------------------------------------------
         function initialize() {
             prepare_top_interpreter();
-            show_greetings()
             if (lines.length) {
                 self.refresh(); // for case when showing long error before init
             }
