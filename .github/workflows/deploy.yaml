@@ -35,7 +35,7 @@ jobs:
         with:
           find: "https://www.penpow.dev"
           replace: "https://penpow.js.org"
-          include: "dist/**/*"
+          include: "**/*"
           
       - name: Deploy to GitHub Pages
         id: deployment
@@ -53,7 +53,7 @@ jobs:
         with:
           find: "https://www.penpow.dev"
           replace: "https://penpow.hackclub.app"
-          include: "dist/**/*"
+          include: "**/*"
           
       - name: Deploy to nest
         uses: appleboy/scp-action@v0.1.7
@@ -63,5 +63,5 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
-          source: "dist/*"
+          source: "**/*"
           target: ~/pub/
