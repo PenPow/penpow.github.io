@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+	title: string,
+	description: string,
+
+	icon?: ImageMetadata | string,
+
+	url: string | undefined,
+}
+
+const { title, description, icon, url } = Astro.props;
+---
+
+<div id="link" data-link={url} class="transition-colors duration-200 flex flex-col w-full gap-x-3 gap-y-2 rounded-xl bg-gray-200/60 dark:bg-white/10 hover:bg-[#e5e8eb] dark:hover:bg-[#3a3a3c] p-4 md:min-h-[100px]">
+	{url === undefined ? (
+		<div class="transition-colors duration-200 text-zinc-800 dark:text-zinc-100 flex items-center gap-x-2 font-semibold">
+			<!-- @ts-expect-error -->
+			{icon && (<Image class="rounded-md" src={icon} alt="Icon" width={28} height={28}/>)}
+
+			{title}
+		</div>
+	) : (
+		<a href={url} class="transition-colors duration-200 text-zinc-800 dark:text-zinc-100 flex items-center gap-x-2 font-semibold hover:underline" target={url.startsWith("/") ? "" : "_blank"} rel={url.startsWith("/") ? "" : "noopener noreferrer"}>
+			<!-- @ts-expect-error -->
+			{icon && (<Image class="rounded-md" src={icon} alt="Icon" width={28} height={28}/>)}
+						
+			{title}
+		</a>
+	)}
+	
+	<p class="transition-colors duration-200 line-clamp-2 text-xs text-gray-600 dark:text-white/50 md:block">{description}</p>
+
+	<slot />
+</div>
