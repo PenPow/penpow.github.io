@@ -1,0 +1,7 @@
+---
+import Heading from "@components/Heading.astro";
+
+const title = await Astro.slots.render('default')
+---
+
+<Heading size="h6" title={title} />
