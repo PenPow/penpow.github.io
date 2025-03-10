@@ -17,13 +17,6 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-
-      - name: Find and Replace
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "https://www.penpow.dev"
-          replace: "https://penpow.js.org"
-          include: "astro.config.mts"
     
       - name: Install, build, and upload your site
         uses: withastro/action@v3
@@ -37,6 +30,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://www.penpow.dev"
+          replace: "https://penpow.js.org"
+          include: "dist/**/*"
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
@@ -48,6 +48,13 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Find and Replace
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "https://www.penpow.dev"
+          replace: "https://penpow.hackclub.app"
+          include: "dist/**/*"
+          
       - name: Deploy to nest
         uses: appleboy/scp-action@v0.1.7
         with:
