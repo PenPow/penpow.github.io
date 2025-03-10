@@ -1,0 +1,6 @@
+version = 1
+
+[merge]
+automerge_label = ["automerge", "sync"]
+method = "squash"
+delete_branch_on_merge = true
