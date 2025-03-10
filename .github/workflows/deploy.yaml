@@ -30,7 +30,7 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
 
-  deploy:
+  deploy-gh:
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -40,3 +40,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
+  deploy-nest:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to nest
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "dist/*"
+          target: your_server_target_folder_path
