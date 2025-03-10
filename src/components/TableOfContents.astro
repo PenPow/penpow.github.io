@@ -1,0 +1,19 @@
+---
+import { makeTOC } from '@utils/toc';
+import type { MarkdownHeading } from 'astro';
+import TOCHeading from './internal/TOCHeading.astro';
+
+interface Props {
+	headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props;
+const toc = makeTOC(headings);
+---
+
+<details>
+	<summary class="transition-colors duration-200 font-semibold text-zinc-800 dark:text-zinc-100">Table of Contents</summary>
+	<ul class="list-none">
+		{toc.map((heading) => <TOCHeading heading={heading} />)}
+	</ul>
+</details>
