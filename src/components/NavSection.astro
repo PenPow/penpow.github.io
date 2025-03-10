@@ -1,0 +1,27 @@
+---
+import { Icon } from "astro-icon/components";
+
+const url = Astro.url;
+const split = url.pathname.split('/');
+---
+
+<div class="left-4 top-4 fixed z-10">
+	<div class="backdrop-blur-md rounded-lg px-2 py-1 flex flex-row gap-2 items-center">
+		<a href="/">
+			<Icon name="heroicons:folder-open-solid" class="transition-colors duration-200 text-zinc-800 dark:text-zinc-100" width={36} height={36} />
+			<p class="sr-only">Home Button</p>
+		</a>
+
+		{split[0] == "/" 
+			? (<p class="ml-2 text-3xl transition-colors duration-200 text-zinc-800 dark:text-zinc-100">/</p>) 
+			: split.slice(1).map(path => (
+				<p class="ml-2 text-2xl font-medium transition-colors duration-200 text-zinc-800 dark:text-zinc-100">/</p>
+				<a href={split.slice(0, split.indexOf(path) + 1).join("/")} class="text-lg rounded-md transition-colors duration-200 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-800 px-2 py-1/2">{path}</a>
+		))}
+	</div>
+
+	<button id="themeswitcher" class="backdrop-blur-md rounded-lg mt-2 lg:mt-0 px-2 py-1 lg:fixed h-12 w-12 right-4 top-4 ml-auto">
+		<Icon class="dark:hidden" name="heroicons:moon" width={36} height={36} />
+		<Icon class="hidden dark:block" name="heroicons:sun" width={36} height={36} />
+	</button>
+</div>

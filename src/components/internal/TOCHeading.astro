@@ -1,0 +1,29 @@
+---
+import type { RecursiveMarkdownHeading } from '@utils/toc';
+interface Props {
+	heading: RecursiveMarkdownHeading
+}
+
+const { heading } = Astro.props;
+---
+
+<li class="before:inline-block ml-6 my-1 before:font-bold before:text-zinc-700 dark:before:text-zinc-200">
+	<a href={'#' + heading.slug} aria-label={heading.text} class="text-zinc-800 underline my-1 dark:text-zinc-200 hover:text-black hover:dark:text-zinc-100">
+		{heading.text}
+	</a>
+	
+	{heading.subheadings.length > 0 && (
+		<ul>
+			{heading.subheadings.map((subheading) => (
+				<Astro.self heading={subheading} />
+			))}
+		</ul>
+	)}
+</li>
+
+<style>
+	li::before {
+		content: "\2022";
+		width: 1em;
+	}
+</style>

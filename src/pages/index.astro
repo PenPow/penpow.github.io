@@ -1,0 +1,53 @@
+---
+import Heading from "@components/Heading.astro";
+import Posts from "@components/Collection.astro";
+import Projects from "@components/Projects.astro";
+import PageLayout from "@layouts/Base.astro";
+
+import { Icon } from "astro-icon/components";
+---
+
+<PageLayout meta={{ title: "Home" }}>
+	<section>
+		<Heading title="About">
+			<div class="ml-auto mt-2 flex items-center gap-2">
+				<p class="mt-1" id="time">--:--</p>
+				<Icon name="heroicons:clock" class="mt-1" width={24} height={24} />
+			</div>
+		</Heading>
+		<p class="mb-4 text-lg">
+			I'm Josh, a backend software engineer. I'm an avid supporter of building thriving online communities, through my work in community management at <br/>&lt;/design&gt;, to Sentry — a Discord Bot designed to help automate moderation of file attachments.
+		</p>
+	</section>
+	<section>
+		<Heading title="Posts" />
+		<Posts collection="posts" />
+	</section>
+	<section>
+		<Heading title="Projects" />
+
+		<Projects />
+	</section>
+	<section>
+		<Heading title="Research Papers" />
+		<Posts collection="papers" />
+	</section>
+</PageLayout>
+
+<script>
+	function updateTime(element: HTMLElement, time: string) {
+		element.textContent = time;
+	}
+
+	function listen() {
+		const clock = document.getElementById('time');
+		if(!clock) return console.warn("No time element found");
+
+		const formatter = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", timeStyle: "short" });
+
+		updateTime(clock, formatter.format(new Date()));
+		window.setInterval(() => updateTime(clock, formatter.format(new Date())), 1000);
+	}
+
+	document.addEventListener("astro:page-load", listen);
+</script>
