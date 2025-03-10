@@ -6,6 +6,9 @@ import GithubBadge from "@assets/github.svg";
 const year = new Date().getFullYear();
 
 const commit = import.meta.env.CF_PAGES_COMMIT_SHA ?? import.meta.env.GITHUB_SHA ?? '@next';
+
+const isMain = Astro.site!.hostname.includes("penpow.dev")
+const commitUrl = commit == "@next" ? commit : `https://github.com/PenPow/${isMain ? "Website" : "penpow.github.io"}/commit/${commit}`
 ---
 
 <footer
