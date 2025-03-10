@@ -1,0 +1,12 @@
+---
+import Heading from "@components/Heading.astro";
+import Posts from "@components/Collection.astro";
+import PageLayout from "@layouts/Base.astro";
+---
+
+<PageLayout meta={{ title: "Posts" }}>
+	<section>
+		<Heading title="Posts" />
+		<Posts collection="posts" />
+	</section>
+</PageLayout>

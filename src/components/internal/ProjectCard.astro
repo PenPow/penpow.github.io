@@ -1,0 +1,35 @@
+---
+import type { LocalProject, Project } from "@site-config";
+import { languageColours } from "@utils/languages";
+import { fetchRemoteProject } from "@utils/projects";
+import Card from "@components/internal/Card.astro";
+
+interface Props {
+	project: Project
+}
+
+let { project } = Astro.props;
+
+let fetchedProject: LocalProject | undefined;
+
+if(project.type === "remote") {
+	const newProject = fetchRemoteProject(project);
+	if(newProject === null) throw new Error("No Project Found");
+	
+	fetchedProject = newProject;
+} else fetchedProject = project;
+
+const url = fetchedProject?.url
+---
+
+{fetchedProject && (
+	<Card title={fetchedProject.name} description={fetchedProject.description} icon={fetchedProject.icon} url={url}>
+		<div class="flex w-full grow flex-row items-center gap-x-2 self-end">
+			<div class="transition-colors duration-200 ml-auto flex items-center gap-x-1 self-end text-xs text-gray-600 dark:text-white/50">
+				<div class="h-[10px] w-[10px] rounded-full" style={{ backgroundColor: languageColours[fetchedProject.language] }}/>
+
+				{fetchedProject.language}
+			</div>
+		</div>
+	</Card>
+)}
