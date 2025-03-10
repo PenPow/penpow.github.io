@@ -1,0 +1,23 @@
+---
+import Card from "@components/internal/Card.astro";
+
+import { getCollection, type AnyEntryMap } from "astro:content";
+
+interface Props {
+	collection: keyof AnyEntryMap
+}
+
+const posts = await getCollection(Astro.props.collection);
+---
+
+<div class="my-2 grid w-full max-w-3xl grid-cols-1 gap-2 md:grid-cols-2">
+	{posts.filter(post => !post.data.hidden).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()).map(post => (
+		<Card title={post.data.title} description={post.data.description} url={`/${Astro.props.collection}/${post.id}`}>
+			<div class="flex w-full grow flex-row items-center gap-x-2 self-end">
+				<div class="transition-colors duration-200 ml-auto flex items-center gap-x-1 self-end text-xs text-gray-600 dark:text-white/50">
+					{new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", dateStyle: "short" }).format(post.data.pubDate)}
+				</div>
+			</div>
+		</Card>
+	))}
+</div>

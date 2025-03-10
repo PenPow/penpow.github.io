@@ -1,0 +1,130 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from "@layouts/Base.astro";
+import Heading from '@components/Heading.astro';
+import H3 from '@components/markdown/h3.astro';
+import H4 from '@components/markdown/h4.astro';
+import H5 from '@components/markdown/h5.astro';
+import H6 from '@components/markdown/h6.astro';
+import Figure from '@components/markdown/Figure.astro';
+import Admonition from '@components/markdown/Admonition.astro';
+import { Image } from 'astro:assets';
+import TableOfContents from '@components/TableOfContents.astro';
+import SocialButton from '@components/internal/SocialButton.astro';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('papers');
+	
+	return entries.map(entry => ({
+		params: { slug: entry.id }, props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+
+const { Content, headings } = await render(entry);
+---
+
+<PageLayout meta={{ title: entry.data.title }}>
+	<section>
+		<Heading title={entry.data.title} />
+		<div class="ml-auto flex items-center gap-2">
+			<p class="mt-1">Published {new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", dateStyle: "short" }).format(entry.data.pubDate)} •</p>
+
+			<div class="mt-1">
+				<SocialButton icon="fluent:document-24-filled" alt="View as PDF" link=`/papers/${entry.data.pdf}` />
+			</div>
+			<div class="transition-colors duration-200 text-zinc-800 hover:text-zinc-950 dark:text-white dark:hover:text-neutral-300">
+				<a href=`/papers/${entry.data.pdf}` target="_blank" rel="noopener noreferrer">
+					<p class="mt-1"><b>Download as PDF</b></p>
+				</a>
+			</div>
+		</div>
+
+		<p class="mb-4 text-lg">
+			<div class="transition-colors duration-200 max-w-fit rounded-r-md rounded-l-sm border-l-4 border-l-zinc-400 bg-zinc-200 dark:bg-zinc-800 inline-block px-4 py-2">
+				{entry.data.description}
+				<br/>
+				<br/>
+				<TableOfContents headings={headings} />
+			</div>
+
+			<br/>
+			<br/>
+
+			<article id="content" class="flex flex-col gap-y-4">
+				<Content components={{ h1: H3, h2: H4, h3: H5, h4: H6, h5: H6, h6: H6, Figure: Figure, Admonition: Admonition, img: Image, Image }} />
+			</artic>
+		</p>
+	</section>
+</PageLayout>
+
+<style is:global>
+	#content p,
+	#content li {
+		@apply transition-colors duration-200 text-lg text-zinc-900 dark:text-zinc-100;
+	}
+
+	#content ul,
+	#content ol {
+		list-style: revert;
+		margin: revert;
+		padding: revert;
+	}
+
+	#content blockquote {
+		@apply transition-colors duration-200 border-l-4 border-l-zinc-400 bg-zinc-200 dark:bg-zinc-800 inline-block px-4 py-2;
+
+		margin: revert;
+	}
+
+	#content blockquote > blockquote {
+		@apply mx-2;
+	}
+
+	#content a {
+		@apply text-blue-500 hover:text-blue-600 underline underline-offset-[3px];
+	}
+
+	#content .footnotes {
+		@apply transition-colors duration-200 border-zinc-200 dark:border-zinc-700 border-t-2 mt-2;
+	}
+
+	#content .footnotes ol,
+	#content .footnotes p {
+		@apply italic text-zinc-600 dark:text-zinc-400;
+	}
+
+	#content section.footnotes > div {
+		@apply hidden;
+	}
+
+	/* These specifiers are getting really deep */
+	#content .footnotes ol li + li { 
+		@apply mt-2;
+	}
+
+	#content .data-footnote-backref {
+		@apply underline-offset-[6px] !important;
+	}
+
+	#content table * {
+		@apply transition-colors duration-200;
+	}
+
+	#content table td, table th {
+		@apply px-2 text-zinc-800 dark:text-zinc-100;
+	}
+
+	#content table th {
+		@apply bg-zinc-100 dark:bg-zinc-900 py-3 border-b-2 border-b-zinc-300 dark:border-b-zinc-700;
+	}
+
+	#content table tr {
+		@apply py-4 mt-2 bg-zinc-100 dark:bg-zinc-900;
+	}
+
+	#content table tr > td {
+		@apply py-2 border-b border-b-zinc-200 dark:border-b-zinc-800;
+	}
+</style>

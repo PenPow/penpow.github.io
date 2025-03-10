@@ -1,0 +1,164 @@
+---
+title: "HTML Markup Tour"
+description: "A tour of the markup elements supported by the blog engine"
+pubDate: 2024-01-03
+
+hidden: true
+---
+
+# Text Formatting
+
+Normal text obviously works, however specific formatting works as well.
+
+Text can be **bold** or _italic_ (or a combination of ***both***).
+
+[Hyperlinks](https://www.youtube.com/watch?v=dQw4w9WgXcQ) work as expected[^1]
+
+> That link leads to a special website by the way
+
+Let that last point be ~~struck from the record~~
+
+> Another aside to state that emojis are made accessible with proper screenreader tags: 🚀🚀🚀
+
+# Images
+
+Example of loading a remote image:
+<Image src="https://github.com/PenPow/Sentry/actions/workflows/CI.yml/badge.svg?branch=main&event=push" alt="Example image" width={205} height={20} />
+
+Image located within a figure
+<Figure caption="Oh lovely image this is">
+	<Image src="https://github.com/PenPow/Sentry/actions/workflows/CI.yml/badge.svg?branch=main&event=push" alt="Example image" width={205} height={20} />
+</Figure>
+
+# Tables
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+
+# Code
+
+```sh frame="terminal" title="Terminal"
+#!/bin/sh
+echo "This is a terminal, wow!"
+```
+
+```ts title="example.js" {2-4} "add"
+// Example function
+function add(a, b) {
+	return a + b;
+}
+```
+
+```ts collapse={3-4}
+// Example function
+function add(a, b) {
+	console.log("Hello");
+	console.log("World");
+
+	return a + b;
+}
+```
+
+```diff
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,4 @@
++this is an actual diff file
+-all contents will remain unmodified
+ no whitespace will be removed either
+```
+
+```diff lang="js"
+  function thisIsJavaScript() {
+    // This entire block gets highlighted as JavaScript,
+    // and we can still add diff markers to it!
+-   console.log('Old code to be removed')
++   console.log('New and shiny code!')
+  }
+```
+
+# Admonitions
+
+<Admonition type="note" title="Note">
+This is ***not***e what you are looking for
+</Admonition>
+
+<Admonition type="info" title="Info">
+This isn't what you are looking for.
+</Admonition>
+
+<Admonition type="tip" title="Tip">
+Here is some advice: this isn't what you are looking for
+</Admonition>
+
+<Admonition type="important" title="Important">
+It is important for you to know that this is not what you are looking for
+</Admonition>
+
+<Admonition type="warning" title="Warning">
+I am warning you - this isn't what you are looking for
+</Admonition>
+
+<Admonition type="danger" title="Danger">
+Uh oh, this is not what you are looking for
+</Admonition>
+
+# Footnotes
+
+Here's a simple footnote[^2]
+
+# Unordered Lists
+
+- Item 1
+- Item 2
+- Item 3
+
+# Ordered Lists
+
+1. Hello
+2. World
+3. Help
+
+# Nested Lists
+
+- Hello
+	- Why Hello
+	- This is a fine day
+- Yes it is
+
+# Task Lists
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+
+# Abbreviations
+
+<abbr title="GIF">Hi</abbr>
+
+# KBD Element
+
+<kbd>CTRL</kbd>
+
+# Blockquotes
+
+> This is a blockquote, which is commonly used when quoting another person or document.
+>
+> Blockquotes are indicated by a `>` at the start of each line.
+
+Now
+
+> Wouldn't it be fun if
+>
+> > We had nested Blockquotes
+> > 
+> > > Triple nested??? Blockquote-ception?
+
+
+[^1]: I'm sorry
+
+[^2]: If you want multiple lines
+
+	Add a tab of indent to have it wrap
