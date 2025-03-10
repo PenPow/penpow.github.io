@@ -3,7 +3,7 @@ import type { LocalProject, RemoteProject } from "@site-config";
 import { languageColours, type Language } from "@utils/languages";
 
 const octokit = new Octokit({ 
-	auth: import.meta.env.GITHUB_PAT,
+	auth: import.meta.env.GH_PAT,
 	timeZone: "Europe/London",
 });
 
