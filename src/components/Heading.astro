@@ -1,0 +1,41 @@
+---
+interface Props {
+	title: string;
+
+	size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+}
+
+const { title, size } = Astro.props;
+
+const HeadingSize = size ?? 'h2';
+
+let textSize: `text-${'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl'}`;
+
+switch(HeadingSize) {
+	case "h1": {
+		textSize = "text-4xl";
+		break;
+	}
+	case "h2":
+	case "h3": {
+		textSize = "text-3xl";
+		break;
+	}
+	case "h4":
+	case "h5": {
+		textSize = "text-2xl";
+		break;
+	}
+	case "h6": {
+		textSize = "text-xl";
+		break;
+	}
+}
+---
+
+<div id={title.toLowerCase().replaceAll(" ", "-").replace(/[^a-zA-Z\s-\d]/g, '')} class="flex items-center">
+	<HeadingSize class={`text-zinc-800 dark:text-zinc-100 mt-4 mb-3 font-bold transition-colors duration-200 ${textSize}`}>{title}</HeadingSize>
+	<div class="transition-colors duration-200 h-[1px] grow bg-black/10 dark:bg-white/20 mt-3 mx-4" />
+
+	<slot />
+</div>
