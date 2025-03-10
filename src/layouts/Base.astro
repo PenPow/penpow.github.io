@@ -1,0 +1,132 @@
+---
+import Header from "@components/Header.astro"
+import Footer from "@components/Footer.astro";
+import NavSection from "@components/NavSection.astro";
+import { siteConfig } from "@site-config";
+import { ClientRouter } from "astro:transitions";
+
+interface Props {
+	meta: {
+		title: string,
+		description?: string
+	};
+}
+
+const {
+	meta: { title, description = siteConfig.description },
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const titleSeparator = "•";
+const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`;
+---
+
+<html lang={siteConfig.lang}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>{siteTitle}</title>
+
+		<link rel="canonical" href={canonicalURL} />
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<meta name="msapplication-TileColor" content="#61728c">
+		<meta name="theme-color" content="#61728c">
+
+		<meta name="title" content={siteTitle} />
+		<meta name="description" content={description} />
+
+		<meta name="theme-color" content="#61728c" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:site_name" content={siteConfig.title} />
+		<meta property="og:locale" content={siteConfig.ogLocale} />
+
+		<meta property="twitter:card" content="summary" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={siteTitle} />
+		<meta property="twitter:description" content={description} />
+
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<meta name="generator" content={Astro.generator} />
+
+		<ClientRouter />
+
+		<script is:inline>
+			const STORAGE_KEY = "theme";
+
+			interval = undefined;
+
+			function toggleTheme(activeTheme) {
+				localStorage.setItem(STORAGE_KEY, activeTheme);
+
+				clearTimeout(interval)
+
+				document.documentElement.classList.add("transitioning");
+				
+				document.documentElement.setAttribute("data-theme", activeTheme === "light" ? "github-light" : "github-dark");
+				document.documentElement.classList.remove("light", "dark");
+				document.documentElement.classList.add(activeTheme);
+
+				interval = setTimeout(() => document.documentElement.classList.remove("transitioning"), 210);
+			}
+
+			const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+			toggleTheme(localStorage.getItem(STORAGE_KEY) ?? (prefersDarkMode.matches ? 'dark' : 'light'));
+
+			function listenForButton() {
+				const themeButton = document.querySelector("#themeswitcher");
+					if(themeButton) themeButton.addEventListener("click", () => {
+						const activeTheme = localStorage.getItem(STORAGE_KEY) === 'dark' ? 'light' : 'dark';
+
+						toggleTheme(activeTheme)
+				});
+			}
+
+			document.addEventListener('astro:before-swap', (ev) => {
+				window.clearTimeout(interval);
+
+				const activeTheme = localStorage.getItem(STORAGE_KEY)
+				
+				ev.newDocument.documentElement.setAttribute("data-theme", activeTheme === "light" ? "github-light" : "github-dark");
+				ev.newDocument.documentElement.classList.remove("light", "dark");
+				ev.newDocument.documentElement.classList.add(activeTheme);
+			})
+
+			document.addEventListener("astro:page-load", listenForButton)
+		</script>
+	</head>
+	<body class="bg-zinc-50 dark:bg-zinc-900">
+		<NavSection />
+		<div class="max-w-3xl px-8 mt-8 lg:mt-24 mx-auto">
+			<Header />
+			<main id="main">
+				<slot />
+			</main>
+			<Footer />
+		</div>		
+	</body>
+</html>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Work+Sans:wght@400;500;600;700;800&display=swap');
+
+	:global(.dark) {
+		color-scheme: dark;
+	}
+
+	body,
+	body *:not(a) {
+		@apply transition-colors duration-200;
+	}
+</style>
