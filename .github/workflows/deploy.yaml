@@ -29,6 +29,7 @@ jobs:
         uses: withastro/action@v3
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_SHA: ${{ github.sha }}
 
   deploy:
     needs: build
