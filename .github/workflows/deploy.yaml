@@ -57,4 +57,4 @@ jobs:
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_KEY }}
           source: "dist/*"
-          target: your_server_target_folder_path
+          target: ~/pub/
