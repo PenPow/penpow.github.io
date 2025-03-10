@@ -5,7 +5,7 @@ import GithubBadge from "@assets/github.svg";
 
 const year = new Date().getFullYear();
 
-const commit = import.meta.env.CF_PAGES_COMMIT_SHA ?? '@next';
+const commit = import.meta.env.CF_PAGES_COMMIT_SHA ?? import.meta.env.GITHUB_SHA ?? '@next';
 ---
 
 <footer
