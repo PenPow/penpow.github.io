@@ -11,7 +11,7 @@ const request = await octokit.rest.repos.listForAuthenticatedUser({
 	per_page: 100
 }).catch((err) => ({ status: err.status ?? 500, data: null }));
 
-if(request.status !== 200 && import.meta.env.DEV) throw new Error(`Failed to fetch github repositories, recieved code ${request.status}`);
+if(request.status !== 200 && !import.meta.env.DEV) throw new Error(`Failed to fetch github repositories, recieved code ${request.status}`);
 
 const repos = request.data
 
