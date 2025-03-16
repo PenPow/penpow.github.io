@@ -28,12 +28,15 @@
     "astro-expressive-code": "^0.40.2",
     "astro-icon": "^1.1.5",
     "astro-robots-txt": "^1.0.0",
+    "mdast-util-to-string": "^4.0.0",
     "octokit": "^4.1.2",
+    "reading-time": "^1.5.0",
     "sharp": "^0.33.5",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "@iconify-json/fluent": "^1.2.15"
+    "@iconify-json/fluent": "^1.2.15",
+    "@types/mdast": "^4.0.4"
   }
 }

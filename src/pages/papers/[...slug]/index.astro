@@ -11,6 +11,7 @@ import Admonition from '@components/markdown/Admonition.astro';
 import { Image } from 'astro:assets';
 import TableOfContents from '@components/TableOfContents.astro';
 import SocialButton from '@components/internal/SocialButton.astro';
+import { Icon } from 'astro-icon/components'
 
 export async function getStaticPaths() {
 	const entries = await getCollection('papers');
@@ -22,7 +23,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 
-const { Content, headings } = await render(entry);
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 ---
 
 <PageLayout meta={{ title: entry.data.title }}>
@@ -30,6 +31,10 @@ const { Content, headings } = await render(entry);
 		<Heading title={entry.data.title} />
 		<div class="ml-auto flex items-center gap-2">
 			<p class="mt-1">Published {new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/London", dateStyle: "short" }).format(entry.data.pubDate)} •</p>
+			<div class="mt-1">
+				<Icon name="heroicons:clock" width={24} height={24} />
+			</div>
+			<p class="mt-1">{remarkPluginFrontmatter.minutesRead} •</p>
 
 			<div class="mt-1">
 				<SocialButton icon="fluent:document-24-filled" alt="View as PDF" link=`/papers/${entry.data.pdf}` />

@@ -8,6 +8,7 @@ import mdx from "@astrojs/mdx";
 import expressiveCode, { type AstroExpressiveCodeOptions } from "astro-expressive-code";
 // @ts-expect-error no types but no types needed
 import a11yEmoji from '@fec/remark-a11y-emoji';
+import { remarkReadingTime } from './src/utils/remark/remark-reading-time';
 import { pluginCollapsibleSections } from '@expressive-code/plugin-collapsible-sections';
 
 const astroExpressiveCodeOptions: AstroExpressiveCodeOptions = {
@@ -27,7 +28,7 @@ export default defineConfig({
   site: "https://www.penpow.dev",
   integrations: [icon(), robotsTxt(), sitemap(), tailwind(), expressiveCode(astroExpressiveCodeOptions), mdx()/*, compress()*/],
   markdown: {
-	remarkPlugins: [a11yEmoji],
+	remarkPlugins: [a11yEmoji, remarkReadingTime],
   },
   image: {
     domains: ['avatars.githubusercontent.com']
