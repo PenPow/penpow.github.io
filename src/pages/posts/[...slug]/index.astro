@@ -10,6 +10,7 @@ import Figure from '@components/markdown/Figure.astro';
 import Admonition from '@components/markdown/Admonition.astro';
 import { Image } from 'astro:assets';
 import TableOfContents from '@components/TableOfContents.astro';
+import { Icon } from 'astro-icon/components';
 
 export async function getStaticPaths() {
 	const entries = await getCollection('posts');
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 
-const { Content, headings } = await render(entry);
+const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 ---
 
 <PageLayout meta={{ title: entry.data.title }}>
@@ -35,8 +36,12 @@ const { Content, headings } = await render(entry);
 		<p class="mb-4 text-lg">
 			<div class="transition-colors duration-200 max-w-fit rounded-r-md rounded-l-sm border-l-4 border-l-zinc-400 bg-zinc-200 dark:bg-zinc-800 inline-block px-4 py-2">
 				{entry.data.description}
-				<br/>
-				<br/>
+
+				<div class="flex gap-2 my-3">
+					<Icon name="heroicons:clock" width={24} height={24} />
+					<p>{remarkPluginFrontmatter.minutesRead}</p>
+				</div>
+
 				<TableOfContents headings={headings} />
 			</div>
 
