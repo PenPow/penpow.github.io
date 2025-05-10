@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components'
 interface Props {
 	icon: string,
 	alt: string,
-	link: "mailto:josh@penpow.dev" | `https://${string}` | `/papers/${string}`
+	link: "mailto:josh@penpow.dev" | `https://${string}` | `/${string}`
 }
 
 const { icon, link, alt } = Astro.props;

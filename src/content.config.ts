@@ -20,6 +20,7 @@ const papersCollection = defineCollection({
 		title: z.string(),
 		pubDate: z.date(),
 		pdf: z.string().endsWith(".pdf"),
+		slides: z.string().endsWith(".pdf").optional(),
 	}),
 });
 
