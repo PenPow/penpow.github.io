@@ -41,9 +41,22 @@ const { Content, headings, remarkPluginFrontmatter } = await render(entry);
 			</div>
 			<div class="transition-colors duration-200 text-zinc-800 hover:text-zinc-950 dark:text-white dark:hover:text-neutral-300">
 				<a href=`/papers/${entry.data.pdf}` target="_blank" rel="noopener noreferrer">
-					<p class="mt-1"><b>Download as PDF</b></p>
+					<p class="mt-1"><b>Download as PDF</b>{entry.data.slides && " • "}</p>
 				</a>
 			</div>
+
+			{entry.data.slides && (
+				<div class="mt-1">
+					<SocialButton icon="ph:presentation-fill" alt="View Slides" link=`/presentations/pdf/${entry.data.slides}` />
+				</div>
+				<div class="transition-colors duration-200 text-zinc-800 hover:text-zinc-950 dark:text-white dark:hover:text-neutral-300">
+					<a href=`/presentations/pdf/${entry.data.slides}` target="_blank" rel="noopener noreferrer">
+						<p class="mt-1"><b>Download Slides</b></p>
+					</a>
+				</div>
+			)}
+
+			
 		</div>
 
 		<p class="mb-4 text-lg">
