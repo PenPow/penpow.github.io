@@ -13,7 +13,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.3.1",
+    "@astrojs/sitemap": "^3.4.0",
     "@astrojs/tailwind": "^6.0.2",
     "@expressive-code/plugin-collapsible-sections": "^0.41.2",
     "@fec/remark-a11y-emoji": "^4.0.2",
@@ -36,7 +36,7 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
-    "@iconify-json/fluent": "^1.2.20",
+    "@iconify-json/fluent": "^1.2.21",
     "@types/mdast": "^4.0.4"
   }
 }
