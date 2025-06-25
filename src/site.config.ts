@@ -3,6 +3,7 @@ import DesignLogo from "@assets/design-logo.webp";
 import SentryLogo from "@assets/sentry.png";
 import BadgesIcon from "@assets/badges.svg";
 import GambitIcon from "@assets/gambit.svg";
+import TheWallLogo from "@assets/the-wall.svg";
 
 export type SiteConfig = {
 	author: string;
@@ -45,6 +46,14 @@ export const projects: Project[] = [
 		repo: "PenPow/Sentry",
 		description: "Discord moderation bot designed to catch malicious files and links.",
 		icon: SentryLogo
+	},
+	{
+		type: "local",
+		name: "The Wall Online",
+		url: "https://www.thewallmagazine.co.uk",
+		language: "Astro",
+		description: "Technical Lead of The Wall Online. Designed the website and surrounding backend infrastructure for the school magazine.",
+		icon: TheWallLogo
 	},
 	{
 		type: "remote",
