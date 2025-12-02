@@ -1,0 +1,87 @@
+---
+title: "GCE Computer Science: Algorithms"
+description: "A guide to the sorting algorithms covered in OCR A-Level CS"
+pubDate: 2025-12-02
+
+hidden: true
+---
+
+There are 4 algorithms you need to know for A-Level computer science.
+
+1. Quicksort
+2. Insertion Sort
+3. Merge Sort
+4. Bubble Sort
+
+These algorithms are designed to sort a list into a certain order.
+
+# Quicksort
+
+> **Time Complexity**: *Best -* `O(n log(n))` *Average -* `O(n log(n))` *Worst -* `O(n²)`<br/>
+> **Space Complexity**: `O(log(n))`
+
+Quicksort is another _recursive_ algorithm.
+
+It broadly works by sorting items around a "pivot", such that items to the left are less than the pivot, and items on the right are greater than the pivot.
+
+After each pass, the pivot is in the correct position. The 2 sublists however are not yet sorted.
+
+A left and right pointer is used (set to the start and end of the list respectively). The left pointer moves to the right until it reaches an element greater than the pivot. The right pointer moves to the left until it reaches an item smaller than the pivot. Once both have occured, the values at the left and right pointer swap positions.
+
+This repeats until the pointers cross, at which point the item at the pivot swaps with the item at the right pointer. The pivot is now sorted.
+
+<Image src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Quicksort-example.gif" alt="Quicksort GIF" width={300} height={180}  />
+
+# Insertion Sort
+
+> **Time Complexity**: *Best -* `O(n)` *Average -* `O(n²)` *Worst -* `O(n²)`<br/>
+> **Space Complexity**: `O(1)`
+
+Insertion sort places elements into a sorted sequence, such that on the `i-th` iteration, the first `i` elements are sorted.
+
+Insertion sort begins with the element at index 1, comparing it to the element on its left. If the elements are in the wrong order they are swapped.
+
+The next item is then checked, it is inserted into the correct position on the sorted list on the left.
+
+<Image src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Insertion-sort-example.gif" alt="Insertion sort GIF" width={300} height={180}  />
+
+# Merge Sort
+
+> **Time Complexity**: *Best -* `O(n log(n))` *Average -* `O(n log(n))` *Worst -* `O(n log(n))`<br/>
+> **Space Complexity**: `O(n)`
+
+Merge sort is a divide and conquer sorting algorithm.
+
+It begins by _recursively_ splitting the list in 2 until it is left with `n` lists of length 1.
+
+It then merges these lists back together, each time merging the lists such that they are sorted.
+
+This repeats until we have the final sorted list.
+
+<Image src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif" alt="Merge sort GIF" width={300} height={180}  />
+
+# Bubble Sort
+
+> **Time Complexity**: *Best -* `O(n)` *Average -* `O(n²)` *Worst -* `O(n²)`<br/>
+> **Space Complexity**: `O(1)`
+
+Bubble sort works by "bubbling" the largest/last item to the end of the array each iteration.
+
+The first 2 items are compared, and swapped if needed. Then the next two get swapped and compared.
+
+This repeats until the end of the list, where the last item has now been sorted. This is one pass.
+
+<Image src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif" alt="Bubble sort GIF" inferSize={true} />
+
+The time complexity is `n²`, as `n` passes occur (each requiring `n` comparisons/swaps).
+
+## Optimisations
+
+Bubble sort can be optimised:
+
+- As the last item is guaranteed to be sorted each time, you only need to compare until `array#length - (i + 1)`
+- If no swaps occur in a given pass, the list must be sorted and hence you can return early.
+
+# Cheat Sheet
+
+<Image src="https://miro.medium.com/0*jqnmfQxHghrWWjwj.jpg" alt="Comparison table" inferSize={true} />
